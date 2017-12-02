@@ -7,7 +7,10 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create") | 
+    @Html.ActionLink("Show 3 columns", "List")
+
+
 </p>
 <table class="table">
     <tr>
@@ -43,6 +46,7 @@
                 @:<strong style="color:red;">
             }
             @Html.DisplayFor(modelItem => item.Stock)
+            
             @if (item.Stock < 1000)
             {     
                 @:</strong>
