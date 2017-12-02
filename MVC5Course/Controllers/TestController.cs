@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using MVC5Course.Models;
 using System.Data.Entity;
 using System.Net;
-
+using Omu.ValueInjecter;
 namespace MVC5Course.Controllers
 {
     public class TestController : Controller
@@ -41,11 +41,14 @@ namespace MVC5Course.Controllers
             return View(item);
         }
         [HttpPost]
-        public ActionResult Edit(Product data)
+        public ActionResult Edit(int? id ,Product data)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(data).State = EntityState.Modified;
+                //容易被串改
+                //db.Entry(data).State = EntityState.Modified;
+                var item = db.Product.Find(id);
+                item.InjectFrom(data);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -73,6 +76,7 @@ namespace MVC5Course.Controllers
             {
                 return RedirectToAction("Index");
             }
+            db.OrderLine.RemoveRange(product.OrderLine.ToList());
             db.Product.Remove(product);
             db.SaveChanges();
             
