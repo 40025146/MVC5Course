@@ -89,5 +89,10 @@ namespace MVC5Course.Controllers
             return View(item);
         }
 
+        public ActionResult EditList()
+        {
+            var data = db.Product.ToList().Take(10);
+            return View(data);
+        }
     }
 }

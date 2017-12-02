@@ -1,16 +1,13 @@
 ﻿@model IEnumerable<MVC5Course.Models.Product>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "EditList";
 }
 
-<h2>Index</h2>
+<h2>EditList</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
-</p>
-<p>
-    @Html.ActionLink("Edit List","EditList")
 </p>
 <table class="table">
     <tr>
@@ -44,9 +41,7 @@
             @Html.DisplayFor(modelItem => item.Stock)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProductId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProductId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProductId })
+           <input type="text" class="form-control" value="@item.Price" />
         </td>
     </tr>
 }

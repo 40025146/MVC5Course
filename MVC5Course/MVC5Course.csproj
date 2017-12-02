@@ -332,6 +332,7 @@
     <Content Include="Views\Test\Delete.cshtml" />
     <Content Include="Views\Test\Details.cshtml" />
     <Content Include="Views\File\Index.cshtml" />
+    <Content Include="Views\Test\EditList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
