@@ -42,6 +42,7 @@ namespace MVC5Course.Controllers
                 item.InjectFrom(data);
                 item.IsDeleted = false;
                 repo.UnitOfWork.Commit();
+                TempData["ProductItem"] = item;
                 return RedirectToAction("Index");
             }
             return View(data);

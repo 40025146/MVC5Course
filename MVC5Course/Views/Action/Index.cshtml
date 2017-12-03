@@ -4,17 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-@if (TempData["ProductItem"] != null)
-{
-    var itm = TempData["ProductItem"] as MVC5Course.Models.Product;
-    <pre>@itm.ProductName 新增成功</pre>
-}
+<h2>Index @ViewBag.h1_title</h2>
+
 <p>
     @Html.ActionLink("Create New", "Create")
-</p>
-<p>
-    @Html.ActionLink("Edit List","EditList")
 </p>
 <table class="table">
     <tr>
@@ -29,6 +22,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Stock)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsDeleted)
         </th>
         <th></th>
     </tr>
@@ -48,11 +44,14 @@
             @Html.DisplayFor(modelItem => item.Stock)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.IsDeleted)
+        </td>
+        <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ProductId }) |
             @Html.ActionLink("Details", "Details", new { id=item.ProductId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ProductId })
         </td>
     </tr>
 }
-    
+
 </table>

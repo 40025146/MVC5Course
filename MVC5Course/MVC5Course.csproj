@@ -185,6 +185,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ActionController.cs" />
     <Compile Include="Controllers\ARController.cs" />
     <Compile Include="Controllers\baseController.cs" />
     <Compile Include="Controllers\FileController.cs" />
@@ -400,6 +401,7 @@
     <Content Include="Views\AR\Index.cshtml" />
     <Content Include="Views\Shared\JsAlertRedirect.cshtml" />
     <Content Include="Views\AR\JsonTest.cshtml" />
+    <Content Include="Views\Action\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="FileUploads\" />

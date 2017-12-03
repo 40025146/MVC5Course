@@ -53,5 +53,14 @@ namespace MVC5Course.Controllers
 
             return Json(data.Take(20), JsonRequestBehavior.AllowGet);
         }
+        public ActionResult RedirectTest1()
+        {
+
+            return RedirectToRoute(new {
+                controller="Home",
+                action="About",
+                id=1
+            });
+        }
     }
 }
