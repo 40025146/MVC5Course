@@ -16,6 +16,7 @@ namespace MVC5Course.Controllers
         public ActionResult Index()
         {
             var data = from p in db.Product
+                       where p.IsDeleted==false
                        select p;
             return View(data.ToList().Take(10));
         }
@@ -48,7 +49,9 @@ namespace MVC5Course.Controllers
                 //容易被串改
                 //db.Entry(data).State = EntityState.Modified;
                 var item = db.Product.Find(id);
+
                 item.InjectFrom(data);
+                item.IsDeleted = false;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -76,8 +79,9 @@ namespace MVC5Course.Controllers
             {
                 return RedirectToAction("Index");
             }
-            db.OrderLine.RemoveRange(product.OrderLine.ToList());
-            db.Product.Remove(product);
+            //db.OrderLine.RemoveRange(product.OrderLine.ToList());
+            //db.Product.Remove(product);
+            product.IsDeleted = true;
             db.SaveChanges();
             
             return RedirectToAction("Index");
@@ -94,5 +98,7 @@ namespace MVC5Course.Controllers
             var data = db.Product.ToList().Take(10);
             return View(data);
         }
+
+        
     }
 }
