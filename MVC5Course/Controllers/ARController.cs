@@ -13,9 +13,18 @@ namespace MVC5Course.Controllers
         {
             return View();
         }
-        public ActionResult Index2()
+        public ActionResult PartialViewTest()
         {
-            return View();
+            return PartialView("Index");
+        }
+        public ActionResult ContentResult()
+        {
+            //不要用
+            return Content("我好帥");
+        }
+        public ActionResult ContentResult_better()
+        {
+            return PartialView("JsAlertRedirect", "檢視成功");
         }
     }
 }

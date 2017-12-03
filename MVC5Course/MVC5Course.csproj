@@ -397,6 +397,7 @@
     <Content Include="Views\File\Index.cshtml" />
     <Content Include="Views\Test\EditList.cshtml" />
     <Content Include="Views\AR\Index.cshtml" />
+    <Content Include="Views\Shared\JsAlertRedirect.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
