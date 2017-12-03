@@ -185,6 +185,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ARController.cs" />
+    <Compile Include="Controllers\baseController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -200,11 +202,20 @@
     <Compile Include="Models\Client.Partial.cs">
       <DependentUpon>EFGeneratePartialClass.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ClientRepository.cs">
+      <DependentUpon>IRepository.EF6.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DataTypes\DataTypeAttribute.cs" />
     <Compile Include="Models\EFGeneratePartialClass.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>EFGeneratePartialClass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EFRepository.cs">
+      <DependentUpon>IRepository.EF6.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EFUnitOfWork.cs">
+      <DependentUpon>IRepository.EF6.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Fabrics.Context.cs">
       <AutoGen>True</AutoGen>
@@ -222,7 +233,30 @@
       <DependentUpon>Fabrics.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\IRepository.EF6.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IRepository.EF6.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IUnitOfWork.cs">
+      <DependentUpon>IRepository.EF6.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OccupationRepository.cs">
+      <DependentUpon>IRepository.EF6.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderLineRepository.cs">
+      <DependentUpon>IRepository.EF6.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderRepository.cs">
+      <DependentUpon>IRepository.EF6.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductRepository.cs">
+      <DependentUpon>IRepository.EF6.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RepositoryHelper.cs">
+      <DependentUpon>IRepository.EF6.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Scripts\ManageViewModels.cs" />
     <Compile Include="Models\Occupation.cs">
       <DependentUpon>Fabrics.tt</DependentUpon>
     </Compile>
@@ -273,6 +307,10 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Fabrics.edmx</DependentUpon>
       <LastGenOutput>Fabrics.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\IRepository.EF6.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IRepository.EF6.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -358,10 +396,12 @@
     <Content Include="Views\Test\Details.cshtml" />
     <Content Include="Views\File\Index.cshtml" />
     <Content Include="Views\Test\EditList.cshtml" />
+    <Content Include="Views\AR\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="FileUploads\" />
+    <Folder Include="Views\base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

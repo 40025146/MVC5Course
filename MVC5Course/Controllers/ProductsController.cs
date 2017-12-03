@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using MVC5Course.Models;
 using MVC5Course.Models.ViewModels;
+
 namespace MVC5Course.Controllers
 {
     public class ProductsController : Controller
@@ -17,7 +18,10 @@ namespace MVC5Course.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            return View(db.Product.ToList().Take(10));
+            var repo = new ProductRepository();
+            repo.UnitOfWork = new EFUnitOfWork();
+            var data = repo.All().Where(p => p.IsDeleted == false);
+            return View(data);
         }
 
         // GET: Products/Details/5

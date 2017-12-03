@@ -9,38 +9,27 @@ using System.Net;
 using Omu.ValueInjecter;
 namespace MVC5Course.Controllers
 {
-    public class TestController : Controller
+    public class TestController : baseController
     {
-        // GET: Test
-        FabricsEntities db = new FabricsEntities();
+        
         public ActionResult Index()
         {
-            var data = from p in db.Product
-                       where p.IsDeleted==false
-                       select p;
-            return View(data.ToList().Take(10));
+            var data = repo.All();
+            return View(data.Take(10));
         }
-        public ActionResult Create()
-        {
-            return View();
-        }
+        
         [HttpPost]
         public ActionResult Create(Product data)
         {
             if (ModelState.IsValid)
             {
-                db.Product.Add(data);
-                db.SaveChanges();
+                repo.Add(data);
+                repo.UnitOfWork.Commit();
                 return RedirectToAction("Index");
             }
             return View(data);
         }
-        public ActionResult Edit(int id)
-        {
-            var item=db.Product.Find(id);
-            
-            return View(item);
-        }
+        
         [HttpPost]
         public ActionResult Edit(int? id ,Product data)
         {
@@ -48,57 +37,45 @@ namespace MVC5Course.Controllers
             {
                 //容易被串改
                 //db.Entry(data).State = EntityState.Modified;
-                var item = db.Product.Find(id);
+                var item = repo.Find((int)id);
 
                 item.InjectFrom(data);
                 item.IsDeleted = false;
-                db.SaveChanges();
+                repo.UnitOfWork.Commit();
                 return RedirectToAction("Index");
             }
             return View(data);
         }
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Product.Find(id);
+            Product product = repo.Find((int)id);
             if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
-        }
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int? id)
-        {
-            Product product = db.Product.Find(id);
-            if (product== null)
-            {
-                return RedirectToAction("Index");
-            }
-            //db.OrderLine.RemoveRange(product.OrderLine.ToList());
-            //db.Product.Remove(product);
-            product.IsDeleted = true;
-            db.SaveChanges();
-            
+            repo.Delete(product);
+            repo.UnitOfWork.Commit();
             return RedirectToAction("Index");
         }
-        public ActionResult Details(int id)
-        {
-            var item = db.Product.Find(id);
-
-            return View(item);
-        }
+        
+        
 
         public ActionResult EditList()
         {
-            var data = db.Product.ToList().Take(10);
+            var data = repo.All().ToList().Take(10);
             return View(data);
         }
+        [HttpPost]
+        public ActionResult EditList(Object data)
+        {
 
-        
+            return RedirectToAction("Index");
+        }
     }
 }
