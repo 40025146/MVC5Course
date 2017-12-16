@@ -9,7 +9,7 @@ using System.Net;
 using Omu.ValueInjecter;
 namespace MVC5Course.Controllers
 {
-    public class TestController : baseController
+    public class TestController : BaseController
     {
         
         public ActionResult Index()

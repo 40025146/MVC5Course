@@ -26,7 +26,8 @@
                     <li>@Html.ActionLink("關於", "About", "Home")</li>
                     <li>@Html.ActionLink("連絡方式", "Contact", "Home")</li>
                     <li>@Html.ActionLink("商品管理","Index","Products")</li>
-                    <li>@Html.ActionLink("我的自訂Controller", "Index", "Test")</li>
+                    <li>@Html.ActionLink("Test", "Index", "Test")</li>
+                    <li>@Html.ActionLink("Action", "Index", "Action")</li>
                     <li>@Html.ActionLink("檔案上傳", "Index", "File")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
@@ -37,7 +38,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - 我的 ASP.NET 應用程式</p>
+            <p>&copy; @DateTime.Now.Year - Panda的第一個MVC</p>
         </footer>
     </div>
 
