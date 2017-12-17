@@ -30,5 +30,14 @@ namespace MVC5Course.ActionFilter
             }
             base.OnResultExecuting(filterContext);
         }
+        
+    }
+    public  class AuthAttribute : AuthorizeAttribute
+    {
+        public override void OnAuthorization(AuthorizationContext filterContext)
+        {
+
+            base.OnAuthorization(filterContext);
+        }
     }
 }

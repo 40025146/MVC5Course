@@ -10,6 +10,7 @@ namespace MVC5Course.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Controller = "Home";
             return View();
         }
         [ShareData]
@@ -22,6 +23,17 @@ namespace MVC5Course.Controllers
         {
             //ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+        public ActionResult RazorView()
+        {
+          
+            return View();
+        }
+
+        public ActionResult Metro_Index()
+        {
+            ViewBag.Controller = "Home";
             return View();
         }
     }
