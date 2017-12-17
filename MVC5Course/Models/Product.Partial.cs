@@ -4,6 +4,7 @@ namespace MVC5Course.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using DataTypes;
+    using ActionFilter;
     [MetadataType(typeof(ProductMetaData))]
     public partial class Product : IValidatableObject
     {
@@ -24,6 +25,7 @@ namespace MVC5Course.Models
         [StringLength(80,MinimumLength =1, ErrorMessage="欄位長度不得大於 80 個字元")]
         //[身分證字號DataType]
         public string ProductName { get; set; }
+        
         public Nullable<decimal> Price { get; set; }
         public Nullable<bool> Active { get; set; }
         public Nullable<decimal> Stock { get; set; }

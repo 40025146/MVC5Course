@@ -1,6 +1,7 @@
 ﻿@model MVC5Course.Models.Product
 
 @{
+    
     ViewBag.Title = "Details";
 }
 
@@ -44,6 +45,9 @@
 
     </dl>
 </div>
+
+@*@Html.Partial("OrderLines", (object)ViewBag.OrderLines);*@
+@Html.Action("Index", "OrderLines",new { id=Model.ProductId})
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ProductId }) |
     @Html.ActionLink("Back to List", "Index")

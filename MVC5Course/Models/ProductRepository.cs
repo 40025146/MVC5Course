@@ -32,7 +32,17 @@ namespace MVC5Course.Models
             return data;
         }
         
-
+        public IEnumerable<object> Get¤£­«½Æprice()
+        {
+            var data = (from p in this.All()
+                        select new
+                        {
+                            Value = p.Price,
+                            Text = p.Price
+                        }
+                        ).Distinct().OrderBy(p => p.Value);
+            return data;
+        }
 	}
 
 	public  interface IProductRepository : IRepository<Product>

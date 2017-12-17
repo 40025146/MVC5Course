@@ -377,10 +377,10 @@
                 <ul class="breadcrumb">
                     <li>
                         <i class="icon-home"></i>
-                        <a href="">@ViewBag.Controller</a>
+                        <a href="">@ViewContext.RouteData.Values["Controller"]</a>
                         <i class="icon-angle-right"></i>
                     </li>
-                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">@ViewContext.RouteData.Values["Action"]</a></li>
                 </ul>
                 @RenderBody()
             </div><!--/.fluid-container-->
